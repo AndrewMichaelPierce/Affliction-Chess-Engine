@@ -152,3 +152,35 @@ function QueenPositions(q) {
     }
     return Qpositions;
 }
+
+function KingPositions(k) {
+    let Kpositions = [];
+    let i = k;
+    if ((i + 10) === blankBoard[i + 10]) {
+        Kpositions.push(humanBoard[i + 10]);
+    }
+    if ((i - 10) === blankBoard[i - 10]) {
+        Kpositions.push(humanBoard[i - 10]);
+    }
+    if ((i + 1) === blankBoard[i + 1]) {
+        Kpositions.push(humanBoard[i + 1]);
+    }
+    if ((i - 1) === blankBoard[i - 1]) {
+        Kpositions.push(humanBoard[i - 1]);
+    }
+    if ((i + 11) === blankBoard[i + 11]) {
+        Kpositions.push(humanBoard[i + 11]);
+    }
+    if ((i - 11) === blankBoard[i - 11]) {
+        Kpositions.push(humanBoard[i - 11]);
+    }
+    if ((i + 9) === blankBoard[i + 9]) {
+        Kpositions.push(humanBoard[i + 9]);
+    }
+    if ((i - 9) === blankBoard[i - 9]) {
+        Kpositions.push(humanBoard[i - 9]);
+    }
+    console.log("King " + humanBoard[k] + Kpositions);
+    return Kpositions;
+}
+KingPositions(98);
