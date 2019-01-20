@@ -180,7 +180,5 @@ function KingPositions(k) {
     if ((i - 9) === blankBoard[i - 9]) {
         Kpositions.push(humanBoard[i - 9]);
     }
-    console.log("King " + humanBoard[k] + Kpositions);
     return Kpositions;
 }
-KingPositions(98);
