@@ -1,18 +1,3 @@
-/*
-Task
-Given two cells on the standard chess board, determine 
-whether they have the same color or not.
-
-Input/Output
-[input] string cell1
-
-[input] string cell2
-
-[output] a boolean value
-
-true if both cells have the same color, false otherwise.
-*/
-
 function chessBoardCellColor(cell1, cell2) {
     let b1 = 0;
     let b2 = 0;    

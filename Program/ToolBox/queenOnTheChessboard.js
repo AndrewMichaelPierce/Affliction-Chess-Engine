@@ -1,22 +1,3 @@
-/*
-The queen can be moved any number of unoccupied squares 
-in a straight line vertically, horizontally, or diagonally, 
-thus combining the moves of the rook and bishop. The queen 
-captures by occupying the square on which an enemy piece 
-sits. (wikipedia: https://en.wikipedia.org/wiki/Queen_(chess)).
-
-Task:
-Write a function availableMoves(position) which returns 
-possibly moves of chess queen. Returned value should be an 
-array with possible moves sorted alphabetically, exluded 
-starting position.
-
-For example when input position is A1 return value should be:
-
-["A2", "A3", "A4", "A5", "A6", "A7", "A8", "B1", "B2", "C1", 
-"C3", "D1", "D4", "E1", "E5", "F1", "F6", "G1", "G7", "H1", "H8"]
-*/
-
 function availableMoves(position) {
 
     let q = position;
