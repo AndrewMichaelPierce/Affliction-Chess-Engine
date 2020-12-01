@@ -152,7 +152,7 @@ let piece = {
             createLegalMoves: function () {
                 for (let influenceIndex = 0, influenceLength = piece.white.king.influence.length; influenceIndex < influenceLength; influenceIndex++) {
                     for (let allSqauresInfluencedIndex = 0, allSqauresInfluencedLength = piece.white.allSqauresInfluenced.length; allSqauresInfluencedIndex < allSqauresInfluencedLength; allSqauresInfluencedIndex++) {
-                        if (piece.white.king.influence[influenceIndex] != piece.white.allSqauresInfluenced[allSqauresInfluencedIndex]) {
+                        if (piece.white.king.influence[influenceIndex] !== piece.white.allSqauresInfluenced[allSqauresInfluencedIndex]) {
                             piece.white.king.legalMoves.push(piece.white.king.influence[influenceIndex]);
                         }
                     }
@@ -236,7 +236,7 @@ let piece = {
                 let lineOfAttack = [-11, -9, 9, 11];
                 let pieceInfluence = false;
                 for (let x = 0; x < 4; x++, pieceInfluence = false) {
-                    for (let i = instanceOfLocation; (i === chessboard.blank[i]) && (pieceInfluence == false); i += lineOfAttack[x]) {
+                    for (let i = instanceOfLocation; (i === chessboard.blank[i]) && (pieceInfluence === false); i += lineOfAttack[x]) {
                         if ((i + lineOfAttack[x]) === chessboard.blank[i + lineOfAttack[x]] || (chessboard.plain[i + lineOfAttack[x]] === 'X' || chessboard.plain[i + lineOfAttack[x]] === 'x')) {
                             if (chessboard.plain[i + lineOfAttack[x]] === 'X') {
                                 piece.white.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
@@ -356,7 +356,7 @@ let piece = {
             createLegalMoves: function () {
                 for (let influenceIndex = 0, influenceLength = piece.black.king.influence.length; influenceIndex < influenceLength; influenceIndex++) {
                     for (let allSqauresInfluencedIndex = 0, allSqauresInfluencedLength = piece.black.allSqauresInfluenced.length; allSqauresInfluencedIndex < allSqauresInfluencedLength; allSqauresInfluencedIndex++) {
-                        if (piece.black.king.influence[influenceIndex] != piece.black.allSqauresInfluenced[allSqauresInfluencedIndex]) {
+                        if (piece.black.king.influence[influenceIndex] !== piece.black.allSqauresInfluenced[allSqauresInfluencedIndex]) {
                             piece.black.king.legalMoves.push(piece.black.king.influence[influenceIndex]);
                         }
                     }
