@@ -440,7 +440,7 @@ let piece = {
                 let lineOfAttack = [-11, -9, 9, 11];
                 let pieceInfluence = false;
                 for (let x = 0; x < 4; x++, pieceInfluence = false) {
-                    for (let i = instanceOfLocation; (i === chessboard.blank[i]) && (pieceInfluence == false); i += lineOfAttack[x]) {
+                    for (let i = instanceOfLocation; (i === chessboard.blank[i]) && (pieceInfluence === false); i += lineOfAttack[x]) {
                         if ((i + lineOfAttack[x]) === chessboard.blank[i + lineOfAttack[x]] || (chessboard.plain[i + lineOfAttack[x]] === 'X' || chessboard.plain[i + lineOfAttack[x]] === 'x')) {
                             if (chessboard.plain[i + lineOfAttack[x]] === 'x') {
                                 piece.black.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
@@ -708,11 +708,7 @@ let debugTools = {
                 }
                 m++;
                 if (m % 8 === 0) {
-                    if (blackWhite === true) {
-                        blackWhite = false;
-                    } else {
-                        blackWhite = true;
-                    }
+                    blackWhite = blackWhite !== true;
                 }
             }
             result += "\n";
