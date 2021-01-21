@@ -534,7 +534,7 @@ enPassant = {
 
 }
 
-castle = {
+let castle = {
     kingsideValue: 8,
     queensideValue: 7,
     white: {
@@ -594,16 +594,16 @@ castle = {
         castle.black.queenside = false;
         castle.black.queenside = false;
     }
-},
+}
 
-    globalEngineVariables = {
-        inCheck: false,
-        whiteCastle: [false, false],  //Queenside Kingside
-        blackCastle: [false, false],  //Queenside Kingside
-        moveCounter: 0,
-        lastPawnMove: 0,
-        enPassant: false,
-    }
+let globalEngineVariables = {
+    inCheck: false,
+    whiteCastle: [false, false],  //Queenside Kingside
+    blackCastle: [false, false],  //Queenside Kingside
+    moveCounter: 0,
+    lastPawnMove: 0,
+    enPassant: false,
+}
 
 
 /*
@@ -842,6 +842,22 @@ let engine = {
             } while (z < piece[color][pieceArray[pieceIndex]].legalMoves.length)
         }
     },
+    isInCheck: function(color) {
+        let opposite = "white";
+        if (color === "white") {
+            opposite = "black";
+        }
+        for (let i = 0, len = piece[opposite].influence.length; i < len; i++) {
+            if (piece[color].king.location[0] === piece[opposite].influence[i]) {
+                globalEngineVariables.inCheck = true;
+                console.log("Check");
+            }
+        }
+    },
+    resetIsInCheck: function() {
+        globalEngineVariables.inCheck = false;
+
+    },
     createPlainChessboard: function() {
         for (let a = 0; a < 2; a++) {
             for (let b = 0; b < 6; b++) {
@@ -960,7 +976,7 @@ let ui = {
 }
 
 function playNewGame() {
-    //chessboard.populateBoardsFromStart();  // Deactivaed due to inconsistant results
+    //chessboard.populateBoardsFromStart();  // Deactivated due to inconsistent results
     engine.onStartPopulatePieceLocations();
     engine.fillEachColorsSquaresOccupiedArray();
     engine.createPlainChessboard();
@@ -975,12 +991,7 @@ function playNewGame() {
     //debugTools.printBoard(chessboard.whiteInfluence);
     //debugTools.printBoard(chessboard.blackInfluence);
     //debugTools.printBoard(chessboard.legal);
-    let inCheck = false;
-    for (let i = 0, len = piece.white.influence.length; i < len; i++) {
-        if (piece.black.king.location[0] === piece.white.influence[i]) {
-            inCheck = true;
-        }
-    }
+    engine.isInCheck('white');
     //console.log("In Check? " + inCheck);
     // reset castling;
     debugTools.startNormalGameBoard(debugTools.colors, debugTools.pieces);
