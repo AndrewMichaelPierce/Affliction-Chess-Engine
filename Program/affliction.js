@@ -124,7 +124,7 @@ let piece = {
         totalValue: 0,
         squaresOccupied: [],
         influence: [],
-        allSqauresInfluenced: [],
+        allSquaresInfluenced: [],
         king: {
             value: 99,
             icon: '♚',
@@ -138,21 +138,21 @@ let piece = {
                 for (let x = 0; x < 8 ; x++) {
                     if (instanceOfLocation + lineOfAttack[x] === chessboard.active[instanceOfLocation + lineOfAttack[x]] || (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'X' || chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'x')) {
                         if (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'X') {
-                            piece.white.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                            piece.white.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                         } else if (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'x') {
                             piece.white.king.influence.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
-                            piece.white.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                            piece.white.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                         } else {
                             piece.white.king.influence.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
-                            piece.white.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                            piece.white.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                         }
                     }
                 }
             },
             createLegalMoves: function () {
                 for (let influenceIndex = 0, influenceLength = piece.white.king.influence.length; influenceIndex < influenceLength; influenceIndex++) {
-                    for (let allSqauresInfluencedIndex = 0, allSqauresInfluencedLength = piece.white.allSqauresInfluenced.length; allSqauresInfluencedIndex < allSqauresInfluencedLength; allSqauresInfluencedIndex++) {
-                        if (piece.white.king.influence[influenceIndex] !== piece.white.allSqauresInfluenced[allSqauresInfluencedIndex]) {
+                    for (let allSquaresInfluencedIndex = 0, allSquaresInfluencedLength = piece.white.allSquaresInfluenced.length; allSquaresInfluencedIndex < allSquaresInfluencedLength; allSquaresInfluencedIndex++) {
+                        if (piece.white.king.influence[influenceIndex] !== piece.white.allSquaresInfluenced[allSquaresInfluencedIndex]) {
                             piece.white.king.legalMoves.push(piece.white.king.influence[influenceIndex]);
                         }
                     }
@@ -174,17 +174,17 @@ let piece = {
                     for (let i = instanceOfLocation; (i === chessboard.blank[i]) && (pieceInfluence === false); i += lineOfAttack[x]) {
                         if ((i + lineOfAttack[x] === chessboard.blank[i + lineOfAttack[x]]) || (chessboard.plain[i + lineOfAttack[x]] === 'X' || chessboard.plain[i + lineOfAttack[x]] === 'x')) {
                             if (chessboard.plain[i + lineOfAttack[x]] === 'X') {
-                                piece.white.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.white.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                                 pieceInfluence = true;
                             } else if (chessboard.plain[i + lineOfAttack[x]] === 'x') {
                                 piece.white.queen.influence.push(chessboard.blank[i + lineOfAttack[x]]);
                                 piece.white.queen.legalMoves.push(chessboard.blank[i + lineOfAttack[x]]);
-                                piece.white.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.white.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                                 pieceInfluence = true;
                             } else {
                                 piece.white.queen.influence.push(chessboard.blank[i + lineOfAttack[x]]);
                                 piece.white.queen.legalMoves.push(chessboard.blank[i + lineOfAttack[x]]);
-                                piece.white.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.white.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                             }
                         }
                     }
@@ -206,17 +206,17 @@ let piece = {
                     for (let i = instanceOfLocation; i === chessboard.blank[i] && pieceInfluence === false; i += lineOfAttack[x]) {
                         if (((i + lineOfAttack[x]) === chessboard.blank[i + lineOfAttack[x]]) || (chessboard.plain[i + lineOfAttack[x]] === 'X' || chessboard.plain[i + lineOfAttack[x]] === 'x')) {
                             if (chessboard.plain[i + lineOfAttack[x]] === 'X') {
-                                piece.white.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.white.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                                 pieceInfluence = true;
                             } else if (chessboard.plain[i + lineOfAttack[x]] === 'x') {
                                 piece.white.rook.influence.push(chessboard.blank[i + lineOfAttack[x]]);
                                 piece.white.rook.legalMoves.push(chessboard.blank[i + lineOfAttack[x]]);
-                                piece.white.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.white.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                                 pieceInfluence = true;
                             } else {
                                 piece.white.rook.influence.push(chessboard.blank[i + lineOfAttack[x]]);
                                 piece.white.rook.legalMoves.push(chessboard.blank[i + lineOfAttack[x]]);
-                                piece.white.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.white.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                             }
 
                         }
@@ -239,17 +239,17 @@ let piece = {
                     for (let i = instanceOfLocation; (i === chessboard.blank[i]) && (pieceInfluence === false); i += lineOfAttack[x]) {
                         if ((i + lineOfAttack[x]) === chessboard.blank[i + lineOfAttack[x]] || (chessboard.plain[i + lineOfAttack[x]] === 'X' || chessboard.plain[i + lineOfAttack[x]] === 'x')) {
                             if (chessboard.plain[i + lineOfAttack[x]] === 'X') {
-                                piece.white.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.white.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                                 pieceInfluence = true;
                             } else if (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'x') {
                                 piece.white.bishop.influence.push(chessboard.blank[i + lineOfAttack[x]]);
                                 piece.white.bishop.legalMoves.push(chessboard.blank[i + lineOfAttack[x]]); // change to ([chessboard.blank[i + lineOfAttack[x]], instanceOfLocation])
-                                piece.white.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.white.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                                 pieceInfluence = true;
                             } else {
                                 piece.white.bishop.influence.push(chessboard.blank[i + lineOfAttack[x]]);
                                 piece.white.bishop.legalMoves.push(chessboard.blank[i + lineOfAttack[x]]);
-                                piece.white.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.white.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                             }
                         }
                     }
@@ -269,15 +269,15 @@ let piece = {
                 for (let x = 0; x < 8 ; x++) {
                     if (instanceOfLocation + lineOfAttack[x] === chessboard.active[instanceOfLocation + lineOfAttack[x]] || (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'X' || chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'x')) {
                         if (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'X') {
-                            piece.white.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                            piece.white.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                         } else if (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'x') {
                             piece.white.knight.influence.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                             piece.white.knight.legalMoves.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
-                            piece.white.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                            piece.white.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                         } else {
                             piece.white.knight.influence.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                             piece.white.knight.legalMoves.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
-                            piece.white.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                            piece.white.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                         }
                     }
                 }
@@ -296,7 +296,7 @@ let piece = {
                 for (let x = 0; x < 2; x++) {
                     if (instanceOfLocation + lineOfAttack[x] === chessboard.active[instanceOfLocation + lineOfAttack[x]] || (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'X' || chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'x')) {
                         piece.white.pawn.influence.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
-                        piece.white.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                        piece.white.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                     }
                 }
             },
@@ -328,7 +328,7 @@ let piece = {
         totalValue: 0,
         squaresOccupied: [],
         influence: [],
-        allSqauresInfluenced: [],
+        allSquaresInfluenced: [],
         king: {
             value: 99,
             icon: '♔',
@@ -342,21 +342,21 @@ let piece = {
                 for (let x = 0; x < 8 ; x++) {
                     if (instanceOfLocation + lineOfAttack[x] === chessboard.active[instanceOfLocation + lineOfAttack[x]] || (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'X' || chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'x')) {
                         if (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'x') {
-                            piece.black.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                            piece.black.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                         } else if (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'X') {
                             piece.black.king.influence.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
-                            piece.black.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                            piece.black.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                         } else {
                             piece.black.king.influence.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
-                            piece.black.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                            piece.black.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                         }
                     }
                 }
             },
             createLegalMoves: function () {
                 for (let influenceIndex = 0, influenceLength = piece.black.king.influence.length; influenceIndex < influenceLength; influenceIndex++) {
-                    for (let allSqauresInfluencedIndex = 0, allSqauresInfluencedLength = piece.black.allSqauresInfluenced.length; allSqauresInfluencedIndex < allSqauresInfluencedLength; allSqauresInfluencedIndex++) {
-                        if (piece.black.king.influence[influenceIndex] !== piece.black.allSqauresInfluenced[allSqauresInfluencedIndex]) {
+                    for (let allSquaresInfluencedIndex = 0, allSquaresInfluencedLength = piece.black.allSquaresInfluenced.length; allSquaresInfluencedIndex < allSquaresInfluencedLength; allSqauresInfluencedIndex++) {
+                        if (piece.black.king.influence[influenceIndex] !== piece.black.allSquaresInfluenced[allSquaresInfluencedIndex]) {
                             piece.black.king.legalMoves.push(piece.black.king.influence[influenceIndex]);
                         }
                     }
@@ -378,17 +378,17 @@ let piece = {
                     for (let i = instanceOfLocation; (i === chessboard.blank[i]) && (pieceInfluence === false); i += lineOfAttack[x]) {
                         if ((i + lineOfAttack[x] === chessboard.blank[i + lineOfAttack[x]]) || (chessboard.plain[i + lineOfAttack[x]] === 'X' || chessboard.plain[i + lineOfAttack[x]] === 'x')) {
                             if (chessboard.plain[i + lineOfAttack[x]] === 'x') {
-                                piece.black.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.black.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                                 pieceInfluence = true;
                             } else if (chessboard.plain[i + lineOfAttack[x]] === 'X') {
                                 piece.black.queen.influence.push(chessboard.blank[i + lineOfAttack[x]]);
                                 piece.black.queen.legalMoves.push(chessboard.blank[i + lineOfAttack[x]]);
-                                piece.black.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.black.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                                 pieceInfluence = true;
                             } else {
                                 piece.black.queen.influence.push(chessboard.blank[i + lineOfAttack[x]]);
                                 piece.black.queen.legalMoves.push(chessboard.blank[i + lineOfAttack[x]]);
-                                piece.black.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.black.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                             }
                         }
                     }
@@ -410,17 +410,17 @@ let piece = {
                     for (let i = instanceOfLocation; i === chessboard.blank[i] && pieceInfluence === false; i += lineOfAttack[x]) {
                         if (((i + lineOfAttack[x]) === chessboard.blank[i + lineOfAttack[x]]) || (chessboard.plain[i + lineOfAttack[x]] === 'X' || chessboard.plain[i + lineOfAttack[x]] === 'x')) {
                             if (chessboard.plain[i + lineOfAttack[x]] === 'x') {
-                                piece.black.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.black.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                                 pieceInfluence = true;
                             } else if (chessboard.plain[i + lineOfAttack[x]] === 'X') {
                                 piece.black.rook.influence.push(chessboard.blank[i + lineOfAttack[x]]);
                                 piece.black.rook.legalMoves.push(chessboard.blank[i + lineOfAttack[x]]);
-                                piece.black.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.black.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                                 pieceInfluence = true;
                             } else {
                                 piece.black.rook.influence.push(chessboard.blank[i + lineOfAttack[x]]);
                                 piece.black.rook.legalMoves.push(chessboard.blank[i + lineOfAttack[x]]);
-                                piece.black.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.black.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                             }
 
                         }
@@ -443,17 +443,17 @@ let piece = {
                     for (let i = instanceOfLocation; (i === chessboard.blank[i]) && (pieceInfluence === false); i += lineOfAttack[x]) {
                         if ((i + lineOfAttack[x]) === chessboard.blank[i + lineOfAttack[x]] || (chessboard.plain[i + lineOfAttack[x]] === 'X' || chessboard.plain[i + lineOfAttack[x]] === 'x')) {
                             if (chessboard.plain[i + lineOfAttack[x]] === 'x') {
-                                piece.black.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.black.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                                 pieceInfluence = true;
                             } else if (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'X') {
                                 piece.black.bishop.influence.push(chessboard.blank[i + lineOfAttack[x]]);
                                 piece.black.bishop.legalMoves.push(chessboard.blank[i + lineOfAttack[x]]);
-                                piece.black.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.black.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                                 pieceInfluence = true;
                             } else {
                                 piece.black.bishop.influence.push(chessboard.blank[i + lineOfAttack[x]]);
                                 piece.black.bishop.legalMoves.push(chessboard.blank[i + lineOfAttack[x]]);
-                                piece.black.allSqauresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
+                                piece.black.allSquaresInfluenced.push(chessboard.blank[i + lineOfAttack[x]]);
                             }
                         }
                     }
@@ -473,15 +473,15 @@ let piece = {
                 for (let x = 0; x < 8 ; x++) {
                     if (instanceOfLocation + lineOfAttack[x] === chessboard.active[instanceOfLocation + lineOfAttack[x]] || (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'X' || chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'x')) {
                         if (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'x') {
-                            piece.black.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                            piece.black.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                         } else if (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'X') {
                             piece.black.knight.influence.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                             piece.black.knight.legalMoves.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
-                            piece.black.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                            piece.black.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                         } else {
                             piece.black.knight.influence.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                             piece.black.knight.legalMoves.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
-                            piece.black.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                            piece.black.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                         }
                     }
                 }
@@ -500,7 +500,7 @@ let piece = {
                 for (let x = 0; x < 2; x++) {
                     if (instanceOfLocation + lineOfAttack[x] === chessboard.plain[instanceOfLocation + lineOfAttack[x]]  || (chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'X'|| chessboard.plain[instanceOfLocation + lineOfAttack[x]] === 'x')) {
                         piece.black.pawn.influence.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
-                        piece.black.allSqauresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
+                        piece.black.allSquaresInfluenced.push(chessboard.blank[instanceOfLocation + lineOfAttack[x]]);
                     }
                 }
             },
@@ -572,14 +572,16 @@ let castle = {
                     castle.white.castleInvalid = true;
                 }
                 //Invalidates Castling if WHITE King in Check.
-                if (piece.white.king.location) // ***************Fix
-                {
+                if (globalEngineVariables.inCheck === true) {
+                    castle.white.variables[4] = true;
+                }
+                if (chessboard.blackInfluence[95] === 'x' || chessboard.blackInfluence[96] === 'x') {
 
                 }
             }
         }
         // **************************
-        //        TODO: FINISH
+        //        TODO: reset in check variable after move
         // **************************
     },
     blackStatus: function() {
